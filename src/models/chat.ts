@@ -2,17 +2,10 @@ import { DataTypes } from 'sequelize';
 import { ExtendedModel } from '../utils/dbHelper';
 import db from '../db';
 
-class Chat extends ExtendedModel {
-  public messages!: object[];
-}
+class Chat extends ExtendedModel {}
 
 Chat.init(
-  {
-    messages: {
-      type: DataTypes.ARRAY,
-      allowNull: false
-    }
-  },
+  {},
   {
     sequelize: db,
     modelName: 'chat'

@@ -4,7 +4,6 @@ import db from '../db';
 
 class Poll extends ExtendedModel {
   public question!: string;
-  public choices!: object[];
   public duration!: number;
 }
 
@@ -14,12 +13,8 @@ Poll.init(
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    choices: {
-      type: DataTypes.ARRAY,
-      allowNull: false
-    },
     duration: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   },
