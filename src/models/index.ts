@@ -6,7 +6,7 @@ import Comment from './comment';
 import Poll from './poll';
 import Choice from './choice';
 import Chat from './chat';
-import Message from './messsage';
+import Message from './message';
 
 User.hasMany(Follower, { as: 'Followers', foreignKey: 'follower', onDelete: 'CASCADE' });
 User.hasMany(Follower, { as: 'Following', foreignKey: 'followed', onDelete: 'CASCADE' });

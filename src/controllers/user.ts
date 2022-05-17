@@ -3,19 +3,19 @@ import { handleEndpointError } from '../utils/errorHandler';
 import UserDAO from '../dao/user';
 
 class UserController {
-  static async getUser(req: Request, res: Response) {
+  static async getUserById(req: Request, res: Response) {
     try {
       const { userId } = req.params;
-      const user = await UserDAO.getUser(userId);
+      const user = await UserDAO.getUserById(userId);
       res.send(user);
     } catch (e) {
       handleEndpointError(e, res);
     }
   }
 
-  static async getUsers(req: Request, res: Response) {
+  static async getAllUsers(req: Request, res: Response) {
     try {
-      const users = await UserDAO.getUsers();
+      const users = await UserDAO.getAllUsers();
       res.send(users);
     } catch (e) {
       handleEndpointError(e, res);

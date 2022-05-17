@@ -1,15 +1,14 @@
-// import models from '../models';
 import models from '../models';
 
 class UserDAO {
-  static async getUser(userId) {
+  static async getUserById(userId) {
     return await models.User.findOne({
       where: { id: userId },
       raw: true
     });
   }
 
-  static async getUsers() {
+  static async getAllUsers() {
     return await models.User.findAll({ raw: true });
   }
 
