@@ -4,12 +4,17 @@ import db from '../db';
 
 class Choice extends ExtendedModel {
   public text!: string;
+  public votes!: number;
 }
 
 Choice.init(
   {
     text: {
       type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    numberOfVotes: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   },

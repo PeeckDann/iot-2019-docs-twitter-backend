@@ -3,7 +3,10 @@ import UserController from '../controllers/user';
 
 const router = Router();
 
-router.put('/users/:userId/follow', UserController.followUser);
-router.delete('/users/delete', UserController.deleteUser);
+router.get('/users/:userId', UserController.getUser);
+router.get('/users', UserController.getUsers);
+router.post('/users', UserController.createUser);
+router.put('/users/:userId', UserController.updateUser);
+router.delete('/users/:userId', UserController.deleteUser);
 
 export default router;

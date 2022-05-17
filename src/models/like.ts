@@ -1,14 +1,14 @@
 import { ExtendedModel } from '../utils/dbHelper';
 import db from '../db';
 
-class Chat extends ExtendedModel {}
+class Like extends ExtendedModel {}
 
-Chat.init(
+Like.init(
   {},
   {
     sequelize: db,
-    modelName: 'chat'
+    modelName: 'like'
   }
 );
 
-export default Chat;
+export default Like;

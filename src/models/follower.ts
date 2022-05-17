@@ -1,14 +1,14 @@
 import { ExtendedModel } from '../utils/dbHelper';
 import db from '../db';
 
-class Chat extends ExtendedModel {}
+class Follower extends ExtendedModel {}
 
-Chat.init(
+Follower.init(
   {},
   {
     sequelize: db,
-    modelName: 'chat'
+    modelName: 'follower'
   }
 );
 
-export default Chat;
+export default Follower;

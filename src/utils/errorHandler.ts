@@ -1,3 +1,5 @@
+import { Response } from 'express';
+
 export class CustomError extends Error {
   constructor(message) {
     super(message);
@@ -5,7 +7,7 @@ export class CustomError extends Error {
   }
 }
 
-export const handleEndpointError = (e, res) => {
+export const handleEndpointError = (e: Error, res: Response) => {
   console.log(e);
   const errorMessage = e.name === 'CustomError' ? e.message : 'Server error';
   res.status(400).send({ success: false, error: errorMessage });

@@ -2,26 +2,26 @@ import { DataTypes } from 'sequelize';
 import { ExtendedModel } from '../utils/dbHelper';
 import db from '../db';
 
-class Picture extends ExtendedModel {
-  public name!: string;
-  public link!: string;
+class Comment extends ExtendedModel {
+  public text!: string;
+  public media!: string;
 }
 
-Picture.init(
+Comment.init(
   {
-    name: {
+    text: {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    link: {
+    media: {
       type: DataTypes.STRING(50),
       allowNull: false
     }
   },
   {
     sequelize: db,
-    modelName: 'picture'
+    modelName: 'comment'
   }
 );
 
-export default Picture;
+export default Comment;
