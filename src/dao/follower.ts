@@ -29,7 +29,7 @@ class FollowerDAO {
     const user = await UserDAO.getUserById(userId);
 
     if (!currentUser || !user) {
-      throw new CustomError('User does not exist!');
+      throw new CustomError('Something went wrong!');
     }
 
     await models.Follower.create(
