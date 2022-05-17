@@ -13,9 +13,11 @@ class PollController {
     }
   }
 
-  static async getAllPolls(req: Request, res: Response) {
+  static async getPolls(req: Request, res: Response) {
     try {
-      const polls = await PollDAO.getAllPolls();
+      //@ts-ignore
+      const currentUserId = req.user.id;
+      const polls = await PollDAO.getPolls(currentUserId);
       res.send(polls);
     } catch (e) {
       handleEndpointError(e, res);
@@ -24,8 +26,10 @@ class PollController {
 
   static async createPoll(req: Request, res: Response) {
     try {
+      //@ts-ignore
+      const currentUserId = req.user.id;
       const newPoll = req.body;
-      await PollDAO.createPoll(newPoll);
+      await PollDAO.createPoll(currentUserId, newPoll);
       res.sendStatus(201);
     } catch (e) {
       handleEndpointError(e, res);

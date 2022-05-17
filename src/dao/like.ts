@@ -13,17 +13,7 @@ class LikeDAO {
   }
 
   static async createLike(currentUserId, tweetId) {
-    const currentUser = await UserDAO.getUserById(currentUserId);
-    const tweet = await TweetDAO.getTweetById(tweetId);
-
-    if (!currentUser || !tweet) {
-      throw new CustomError('Something went wrong!');
-    }
-
-    await models.Like.create(
-      { user: currentUser, tweet },
-      { include: [{ model: models.User }, { model: models.Tweet }] }
-    );
+    await models.Like.create({ userId: currentUserId, tweetId });
   }
 
   static async deleteLike(likeId) {

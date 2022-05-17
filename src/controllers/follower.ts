@@ -7,7 +7,7 @@ class FollowerController {
     try {
       //@ts-ignore
       const currentUserId = req.user.id;
-      const followers = await FollowerDAO.getAllFollowers(currentUserId);
+      const followers = await FollowerDAO.getFollowers(currentUserId);
       res.send(followers);
     } catch (e) {
       handleEndpointError(e, res);
@@ -18,7 +18,7 @@ class FollowerController {
     try {
       //@ts-ignore
       const currentUserId = req.user.id;
-      const following = await FollowerDAO.getAllFollowing(currentUserId);
+      const following = await FollowerDAO.getFollowing(currentUserId);
       res.send(following);
     } catch (e) {
       handleEndpointError(e, res);

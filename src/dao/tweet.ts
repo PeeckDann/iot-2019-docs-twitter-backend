@@ -8,12 +8,12 @@ class TweetDAO {
     });
   }
 
-  static async getAllTweets() {
-    return await models.Tweet.findAll({ raw: true });
+  static async getTweets(currentUserId) {
+    return await models.Tweet.findAll({ where: { userId: currentUserId }, raw: true });
   }
 
-  static async createTweet(newTweet) {
-    await models.Tweet.create(newTweet);
+  static async createTweet(currentUserId, newTweet) {
+    await models.Tweet.create({ userId: currentUserId, ...newTweet });
   }
 
   static async updateTweet(tweetId, updatedTweet) {

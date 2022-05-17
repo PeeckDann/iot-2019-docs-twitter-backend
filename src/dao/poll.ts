@@ -8,12 +8,12 @@ class PollDAO {
     });
   }
 
-  static async getAllPolls() {
-    return await models.Poll.findAll({ raw: true });
+  static async getPolls(currentUserId) {
+    return await models.Poll.findAll({ where: { userId: currentUserId }, raw: true });
   }
 
-  static async createPoll(newPoll) {
-    await models.Poll.create(newPoll);
+  static async createPoll(currentUserId, newPoll) {
+    await models.Poll.create({ userId: currentUserId, ...newPoll });
   }
 
   static async updatePoll(pollId, updatedPoll) {

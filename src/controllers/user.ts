@@ -13,9 +13,9 @@ class UserController {
     }
   }
 
-  static async getAllUsers(req: Request, res: Response) {
+  static async getUsers(req: Request, res: Response) {
     try {
-      const users = await UserDAO.getAllUsers();
+      const users = await UserDAO.getUsers();
       res.send(users);
     } catch (e) {
       handleEndpointError(e, res);

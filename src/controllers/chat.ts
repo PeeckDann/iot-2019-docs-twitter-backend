@@ -13,9 +13,11 @@ class ChatController {
     }
   }
 
-  static async getAllChats(req: Request, res: Response) {
+  static async getChats(req: Request, res: Response) {
     try {
-      const chats = await ChatDAO.getAllChats();
+      //@ts-ignore
+      const currentUserId = req.user.id;
+      const chats = await ChatDAO.getChats(currentUserId);
       res.send(chats);
     } catch (e) {
       handleEndpointError(e, res);
@@ -24,8 +26,11 @@ class ChatController {
 
   static async createChat(req: Request, res: Response) {
     try {
+      //@ts-ignore
+      const currentUserId = req.user.id;
+      const { userId } = req.body;
       const newChat = req.body;
-      await ChatDAO.createChat(newChat);
+      await ChatDAO.createChat(currentUserId, userId, newChat);
       res.sendStatus(201);
     } catch (e) {
       handleEndpointError(e, res);

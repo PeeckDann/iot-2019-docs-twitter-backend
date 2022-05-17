@@ -8,12 +8,12 @@ class ChoiceDAO {
     });
   }
 
-  static async getAllChoices() {
-    return await models.Choice.findAll({ raw: true });
+  static async getChoices(pollId) {
+    return await models.Choice.findAll({ where: { pollId }, raw: true });
   }
 
-  static async createChoice(newChoice) {
-    await models.Choice.create(newChoice);
+  static async createChoice(pollId, newChoice) {
+    await models.Choice.create({ pollId, ...newChoice });
   }
 
   static async updateChoice(choiceId, updatedChoice) {

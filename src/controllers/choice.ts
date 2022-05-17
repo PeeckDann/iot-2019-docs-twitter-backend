@@ -13,9 +13,10 @@ class ChoiceController {
     }
   }
 
-  static async getAllChoices(req: Request, res: Response) {
+  static async getChoices(req: Request, res: Response) {
     try {
-      const choices = await ChoiceDAO.getAllChoices();
+      const { pollId } = req.params;
+      const choices = await ChoiceDAO.getChoices(pollId);
       res.send(choices);
     } catch (e) {
       handleEndpointError(e, res);
@@ -24,8 +25,9 @@ class ChoiceController {
 
   static async createChoice(req: Request, res: Response) {
     try {
+      const { pollId } = req.params;
       const newChoice = req.body;
-      await ChoiceDAO.createChoice(newChoice);
+      await ChoiceDAO.createChoice(pollId, newChoice);
       res.sendStatus(201);
     } catch (e) {
       handleEndpointError(e, res);

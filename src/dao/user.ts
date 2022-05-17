@@ -8,7 +8,7 @@ class UserDAO {
     });
   }
 
-  static async getAllUsers() {
+  static async getUsers() {
     return await models.User.findAll({ raw: true });
   }
 

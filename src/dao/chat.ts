@@ -8,12 +8,12 @@ class ChatDAO {
     });
   }
 
-  static async getAllChats() {
-    return await models.Chat.findAll({ raw: true });
+  static async getChats(currentUserId) {
+    return await models.Chat.findAll({ where: { userId: currentUserId }, raw: true });
   }
 
-  static async createChat(newChat) {
-    await models.Chat.create(newChat);
+  static async createChat(currentUserId, userId, newChat) {
+    await models.Chat.create({ firstUserId: currentUserId, secondUserId: userId, newChat });
   }
 
   static async updateChat(chatId, updatedChat) {

@@ -13,9 +13,10 @@ class MessageController {
     }
   }
 
-  static async getAllMessages(req: Request, res: Response) {
+  static async getMessages(req: Request, res: Response) {
     try {
-      const messages = await MessageDAO.getAllMessages();
+      const { chatId } = req.params;
+      const messages = await MessageDAO.getMessages(chatId);
       res.send(messages);
     } catch (e) {
       handleEndpointError(e, res);
@@ -24,8 +25,11 @@ class MessageController {
 
   static async createMessage(req: Request, res: Response) {
     try {
+      //@ts-ignore
+      const currentUserId = req.user.id;
+      const { chatId } = req.params;
       const newMessage = req.body;
-      await MessageDAO.createMessage(newMessage);
+      await MessageDAO.createMessage(currentUserId, chatId, newMessage);
       res.sendStatus(201);
     } catch (e) {
       handleEndpointError(e, res);

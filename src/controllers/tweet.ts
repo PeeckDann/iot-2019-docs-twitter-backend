@@ -13,9 +13,11 @@ class TweetController {
     }
   }
 
-  static async getAllTweets(req: Request, res: Response) {
+  static async getTweets(req: Request, res: Response) {
     try {
-      const tweets = await TweetDAO.getAllTweets();
+      //@ts-ignore
+      const currentUserId = req.user.id;
+      const tweets = await TweetDAO.getTweets(currentUserId);
       res.send(tweets);
     } catch (e) {
       handleEndpointError(e, res);
@@ -24,8 +26,10 @@ class TweetController {
 
   static async createTweet(req: Request, res: Response) {
     try {
+      //@ts-ignore
+      const currentUserId = req.user.id;
       const newTweet = req.body;
-      await TweetDAO.createTweet(newTweet);
+      await TweetDAO.createTweet(currentUserId, newTweet);
       res.sendStatus(201);
     } catch (e) {
       handleEndpointError(e, res);

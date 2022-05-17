@@ -13,9 +13,10 @@ class CommentController {
     }
   }
 
-  static async getAllComments(req: Request, res: Response) {
+  static async getComments(req: Request, res: Response) {
     try {
-      const comments = await CommentDAO.getAllComments();
+      const { tweetId } = req.params;
+      const comments = await CommentDAO.getComments(tweetId);
       res.send(comments);
     } catch (e) {
       handleEndpointError(e, res);
@@ -24,8 +25,11 @@ class CommentController {
 
   static async createComment(req: Request, res: Response) {
     try {
+      //@ts-ignore
+      const currentUserId = req.user.id;
+      const { tweetId } = req.params;
       const newComment = req.body;
-      await CommentDAO.createComment(newComment);
+      await CommentDAO.createComment(currentUserId, tweetId, newComment);
       res.sendStatus(201);
     } catch (e) {
       handleEndpointError(e, res);

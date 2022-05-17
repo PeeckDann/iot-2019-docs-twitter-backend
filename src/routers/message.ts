@@ -3,10 +3,10 @@ import MessageController from '../controllers/message';
 
 const router = Router();
 
-router.get('/messages/:messageId', MessageController.getMessageById);
-router.get('/messages', MessageController.getAllMessages);
-router.post('/messages', MessageController.createMessage);
-router.put('/messages/:messageId', MessageController.updateMessage);
-router.delete('/messages/:messageId', MessageController.deleteMessage);
+router.get('/chats/:chatId/messages/:messageId', MessageController.getMessageById);
+router.get('/chats/:chatId/messages', MessageController.getMessages);
+router.post('/chats/:chatId/messages', MessageController.createMessage);
+router.put('/chats/:chatId/messages/:messageId', MessageController.updateMessage);
+router.delete('/chats/:chatId/messages/:messageId', MessageController.deleteMessage);
 
 export default router;

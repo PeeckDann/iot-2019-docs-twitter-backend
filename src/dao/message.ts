@@ -8,12 +8,12 @@ class MessageDAO {
     });
   }
 
-  static async getAllMessages() {
-    return await models.Message.findAll({ raw: true });
+  static async getMessages(chatId) {
+    return await models.Message.findAll({ where: { chatId }, raw: true });
   }
 
-  static async createMessage(newMessage) {
-    await models.Message.create(newMessage);
+  static async createMessage(currentUserId, chatId, newMessage) {
+    await models.Message.create({ userId: currentUserId, chatId, ...newMessage });
   }
 
   static async updateMessage(messageId, updatedMessage) {

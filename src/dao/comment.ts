@@ -8,12 +8,12 @@ class CommentDAO {
     });
   }
 
-  static async getAllComments() {
-    return await models.Comment.findAll({ raw: true });
+  static async getComments(tweetId) {
+    return await models.Comment.findAll({ where: { tweetId }, raw: true });
   }
 
-  static async createComment(newComment) {
-    await models.Comment.create(newComment);
+  static async createComment(currentUserId, tweetId, newComment) {
+    await models.Comment.create({ userId: currentUserId, tweetId, ...newComment });
   }
 
   static async updateComment(commentId, updatedComment) {

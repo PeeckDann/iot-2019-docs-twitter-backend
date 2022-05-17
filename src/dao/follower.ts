@@ -3,14 +3,14 @@ import UserDAO from './user';
 import { CustomError } from '../utils/errorHandler';
 
 class FollowerDAO {
-  static async getAllFollowers(currentUserId) {
+  static async getFollowers(currentUserId) {
     return await models.Follower.findAll({
       where: { followed: currentUserId },
       raw: true
     });
   }
 
-  static async getAllFollowing(currentUserId) {
+  static async getFollowing(currentUserId) {
     return await models.Follower.findAll({
       where: { following: currentUserId },
       raw: true
@@ -25,20 +25,10 @@ class FollowerDAO {
   }
 
   static async createFollower(currentUserId, userId) {
-    const currentUser = await UserDAO.getUserById(currentUserId);
-    const user = await UserDAO.getUserById(userId);
-
-    if (!currentUser || !user) {
-      throw new CustomError('Something went wrong!');
-    }
-
-    await models.Follower.create(
-      {
-        follower: currentUser,
-        followed: user
-      },
-      { include: [{ model: models.User }] }
-    );
+    await models.Follower.create({
+      followerId: currentUserId,
+      followedId: userId
+    });
   }
 
   static async deleteFollower(followerId) {
