@@ -19,7 +19,7 @@ class FollowerDAO {
 
   static async getFollowerByUserIds(currentUserId, userId) {
     return await models.Follower.findOne({
-      where: { follower: currentUserId, followed: userId },
+      where: { followerId: currentUserId, followedId: userId },
       raw: true
     });
   }

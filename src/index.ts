@@ -25,7 +25,8 @@ app.use(json());
 app.use(cors());
 app.use(router);
 
-db.sync({ force: true })
+// db.sync({ force: true })
+db.authenticate()
   .then(() => models.User.findByPk(1))
   .then((user) =>
     user
