@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import userRouter from './user';
-// import followerRouter from './follower';
+import followerRouter from './follower';
 import tweetRouter from './tweet';
 // import likeRouter from './like';
 import commentRouter from './comment';
@@ -13,7 +13,7 @@ import messageRouter from './message';
 const router = Router();
 
 router.use(userRouter);
-// router.use(followerRouter);
+router.use(followerRouter);
 router.use(tweetRouter);
 // router.use(likeRouter);
 router.use(commentRouter);

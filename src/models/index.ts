@@ -8,10 +8,10 @@ import Choice from './choice';
 import Chat from './chat';
 import Message from './message';
 
-User.hasMany(Follower, { as: 'Followers', foreignKey: 'follower', onDelete: 'CASCADE' });
-User.hasMany(Follower, { as: 'Following', foreignKey: 'followed', onDelete: 'CASCADE' });
-User.hasMany(Chat, { as: 'FirstUser', foreignKey: 'firstUserId', onDelete: 'CASCADE' });
-User.hasMany(Chat, { as: 'SecondUser', foreignKey: 'secondUserId', onDelete: 'CASCADE' });
+User.hasMany(Follower, { as: 'follower', foreignKey: 'followerId', onDelete: 'CASCADE' });
+User.hasMany(Follower, { as: 'followed', foreignKey: 'followedId', onDelete: 'CASCADE' });
+User.hasMany(Chat, { as: 'firstUser', foreignKey: 'firstUserId', onDelete: 'CASCADE' });
+User.hasMany(Chat, { as: 'secondUser', foreignKey: 'secondUserId', onDelete: 'CASCADE' });
 User.hasMany(Message, { onDelete: 'CASCADE' });
 User.hasMany(Poll, { onDelete: 'CASCADE' });
 User.hasMany(Tweet, { onDelete: 'CASCADE' });
