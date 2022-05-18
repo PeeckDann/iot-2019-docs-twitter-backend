@@ -5,6 +5,9 @@ import router from './routers';
 import db from './db';
 import models from './models';
 
+// Test
+// import CSVProcessor from './utils/csvProcessor';
+
 const appConfig = config.get('appConfig');
 
 const app = express();
@@ -21,6 +24,9 @@ app.use(urlencoded({ extended: false }));
 app.use(json());
 app.use(cors());
 app.use(router);
+
+// Test
+// new CSVProcessor().writeCSV();
 
 db.authenticate()
   .then(() => models.User.findByPk(1))
