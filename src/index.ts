@@ -1,6 +1,3 @@
-// TODO:
-// 1 - test user layers
-
 import express, { urlencoded, json, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import config from 'config';
@@ -25,7 +22,6 @@ app.use(json());
 app.use(cors());
 app.use(router);
 
-// db.sync({ force: true })
 db.authenticate()
   .then(() => models.User.findByPk(1))
   .then((user) =>

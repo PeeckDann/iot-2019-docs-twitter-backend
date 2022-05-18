@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { handleEndpointError } from '../utils/errorHandler';
-import TweetDAO from '../dao/Tweet';
+import TweetDAO from '../dao/tweet';
 
 class TweetController {
   static async getTweetById(req: Request, res: Response) {

@@ -1,8 +1,4 @@
 import models from '../models';
-import UserDAO from './user';
-import TweetDAO from './tweet';
-
-import { CustomError } from '../utils/errorHandler';
 
 class LikeDAO {
   static async getLikeByUserAndTweetIds(currentUserId, tweetId) {

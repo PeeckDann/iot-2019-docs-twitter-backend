@@ -1,6 +1,4 @@
 import models from '../models';
-import UserDAO from './user';
-import { CustomError } from '../utils/errorHandler';
 
 class FollowerDAO {
   static async getFollowers(currentUserId) {

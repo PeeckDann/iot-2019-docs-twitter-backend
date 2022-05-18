@@ -9,6 +9,7 @@ import pollRouter from './poll';
 import choiceRouter from './choice';
 import chatRouter from './chat';
 import messageRouter from './message';
+import feedRouter from './feed';
 
 const router = Router();
 
@@ -21,5 +22,6 @@ router.use(pollRouter);
 router.use(choiceRouter);
 router.use(chatRouter);
 router.use(messageRouter);
+router.use(feedRouter);
 
 export default router;

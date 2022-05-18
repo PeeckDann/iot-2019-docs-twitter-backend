@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { handleEndpointError } from '../utils/errorHandler';
-import PollDAO from '../dao/Poll';
+import PollDAO from '../dao/poll';
 
 class PollController {
   static async getPollById(req: Request, res: Response) {

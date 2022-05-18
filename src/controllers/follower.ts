@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { handleEndpointError } from '../utils/errorHandler';
-import FollowerDAO from '../dao/Follower';
+import FollowerDAO from '../dao/follower';
 
 class FollowerController {
   static async getUserFollowers(req: Request, res: Response) {

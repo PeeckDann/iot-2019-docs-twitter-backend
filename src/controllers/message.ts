@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { handleEndpointError } from '../utils/errorHandler';
-import MessageDAO from '../dao/Message';
+import MessageDAO from '../dao/message';
 
 class MessageController {
   static async getMessageById(req: Request, res: Response) {

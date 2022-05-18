@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { handleEndpointError } from '../utils/errorHandler';
-import ChoiceDAO from '../dao/Choice';
+import ChoiceDAO from '../dao/choice';
 
 class ChoiceController {
   static async getChoiceById(req: Request, res: Response) {
