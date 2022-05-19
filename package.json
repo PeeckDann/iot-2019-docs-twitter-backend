@@ -4,7 +4,8 @@
   "description": "Suffering",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts"
+    "start": "ts-node ./src/index.ts",
+    "write": "ts-node ./src/csvUtils/index.ts"
   },
   "repository": {
     "type": "git",

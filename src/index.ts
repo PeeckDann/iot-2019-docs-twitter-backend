@@ -5,9 +5,6 @@ import router from './routers';
 import db from './db';
 import models from './models';
 
-// Test
-// import CSVProcessor from './utils/csvProcessor';
-
 const appConfig = config.get('appConfig');
 
 const app = express();
@@ -25,24 +22,10 @@ app.use(json());
 app.use(cors());
 app.use(router);
 
-// Test
-// new CSVProcessor().writeCSV();
-
-db.authenticate()
-  .then(() => models.User.findByPk(1))
-  .then((user) =>
-    user
-      ? user
-      : models.User.create({
-          avatar: 'https://robohash.org/sus_amogus',
-          username: 'Sus Amogus',
-          tag: 'sus_amogus',
-          bio: 'Have you heard about hit game Among Us?'
-        })
-  )
+db.sync({ force: true })
   .then(() => {
     app.listen(appConfig.port, () => {
-      console.log('Server started');
+      console.log(`Server started on port ${appConfig.port}`);
     });
   })
   .catch((err) => console.log(err));
