@@ -36,6 +36,15 @@ class PollController {
     }
   }
 
+  static async createPollsFromCSV(req: Request, res: Response) {
+    try {
+      await PollDAO.createPollsFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updatePoll(req: Request, res: Response) {
     try {
       const { pollId } = req.params;

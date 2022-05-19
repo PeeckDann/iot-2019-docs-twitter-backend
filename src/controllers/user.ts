@@ -32,6 +32,15 @@ class UserController {
     }
   }
 
+  static async createUsersFromCSV(req: Request, res: Response) {
+    try {
+      await UserDAO.createUsersFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updateUser(req: Request, res: Response) {
     try {
       const { userId } = req.params;

@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class ChatDAO {
   static async getChatById(chatId) {
@@ -14,6 +15,10 @@ class ChatDAO {
 
   static async createChat(currentUserId, userId, newChat) {
     await models.Chat.create({ firstUserId: currentUserId, secondUserId: userId, newChat });
+  }
+
+  static async createChatsFromCSV() {
+    await models.Chat.bulkCreate(new CSVReader().getParsedData('chats'));
   }
 
   static async updateChat(chatId, updatedChat) {

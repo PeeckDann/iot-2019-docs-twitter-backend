@@ -43,6 +43,15 @@ class FollowerController {
       handleEndpointError(e, res);
     }
   }
+
+  static async createFollowersFromCSV(req: Request, res: Response) {
+    try {
+      await FollowerDAO.createFollowersFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
 }
 
 export default FollowerController;

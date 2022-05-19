@@ -34,6 +34,15 @@ class ChoiceController {
     }
   }
 
+  static async createChoicesFromCSV(req: Request, res: Response) {
+    try {
+      await ChoiceDAO.createChoicesFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updateChoice(req: Request, res: Response) {
     try {
       const { choiceId } = req.params;

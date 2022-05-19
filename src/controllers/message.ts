@@ -36,6 +36,15 @@ class MessageController {
     }
   }
 
+  static async createMessagesFromCSV(req: Request, res: Response) {
+    try {
+      await MessageDAO.createMessagesFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updateMessage(req: Request, res: Response) {
     try {
       const { messageId } = req.params;

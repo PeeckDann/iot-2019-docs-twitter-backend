@@ -36,6 +36,15 @@ class CommentController {
     }
   }
 
+  static async createCommentsFromCSV(req: Request, res: Response) {
+    try {
+      await CommentDAO.createCommentsFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updateComment(req: Request, res: Response) {
     try {
       const { commentId } = req.params;

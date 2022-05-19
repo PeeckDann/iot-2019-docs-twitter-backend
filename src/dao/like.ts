@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class LikeDAO {
   static async getLikeByUserAndTweetIds(currentUserId, tweetId) {
@@ -10,6 +11,10 @@ class LikeDAO {
 
   static async createLike(currentUserId, tweetId) {
     await models.Like.create({ userId: currentUserId, tweetId });
+  }
+
+  static async createLikesFromCSV() {
+    await models.Like.bulkCreate(new CSVReader().getParsedData('like'));
   }
 
   static async deleteLike(likeId) {

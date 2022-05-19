@@ -6,6 +6,7 @@ const router = Router();
 router.get('/polls/:pollId', PollController.getPollById);
 router.get('/polls', PollController.getPolls);
 router.post('/polls', PollController.createPoll);
+router.post('/polls/fill-db/csv', PollController.createPollsFromCSV);
 router.put('/polls/:pollId', PollController.updatePoll);
 router.delete('/polls/:pollId', PollController.deletePoll);
 

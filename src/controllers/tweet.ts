@@ -36,6 +36,15 @@ class TweetController {
     }
   }
 
+  static async createTweetsFromCSV(req: Request, res: Response) {
+    try {
+      await TweetDAO.createTweetsFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updateTweet(req: Request, res: Response) {
     try {
       const { tweetId } = req.params;

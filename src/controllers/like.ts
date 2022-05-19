@@ -21,6 +21,15 @@ class LikeController {
       handleEndpointError(e, res);
     }
   }
+
+  static async createLikesFromCSV(req: Request, res: Response) {
+    try {
+      await LikeDAO.createLikesFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
 }
 
 export default LikeController;

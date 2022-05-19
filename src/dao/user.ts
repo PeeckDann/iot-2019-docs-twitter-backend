@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class UserDAO {
   static async getUserById(userId) {
@@ -14,6 +15,10 @@ class UserDAO {
 
   static async createUser(newUser) {
     await models.User.create(newUser);
+  }
+
+  static async createUsersFromCSV() {
+    await models.User.bulkCreate(new CSVReader().getParsedData('user'));
   }
 
   static async updateUser(userId, updatedUser) {

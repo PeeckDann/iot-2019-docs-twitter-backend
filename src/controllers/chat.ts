@@ -37,6 +37,15 @@ class ChatController {
     }
   }
 
+  static async createChatsFromCSV(req: Request, res: Response) {
+    try {
+      await ChatDAO.createChatsFromCSV();
+      res.sendStatus(201);
+    } catch (e) {
+      handleEndpointError(e, res);
+    }
+  }
+
   static async updateChat(req: Request, res: Response) {
     try {
       const { chatId } = req.params;

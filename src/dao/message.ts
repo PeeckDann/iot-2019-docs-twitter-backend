@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class MessageDAO {
   static async getMessageById(messageId) {
@@ -14,6 +15,10 @@ class MessageDAO {
 
   static async createMessage(currentUserId, chatId, newMessage) {
     await models.Message.create({ userId: currentUserId, chatId, ...newMessage });
+  }
+
+  static async createMessagesFromCSV() {
+    await models.Message.bulkCreate(new CSVReader().getParsedData('message'));
   }
 
   static async updateMessage(messageId, updatedMessage) {

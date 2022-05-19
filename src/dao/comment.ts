@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class CommentDAO {
   static async getCommentById(commentId) {
@@ -14,6 +15,10 @@ class CommentDAO {
 
   static async createComment(currentUserId, tweetId, newComment) {
     await models.Comment.create({ userId: currentUserId, tweetId, ...newComment });
+  }
+
+  static async createCommentsFromCSV() {
+    await models.Comment.bulkCreate(new CSVReader().getParsedData('comment'));
   }
 
   static async updateComment(commentId, updatedComment) {

@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class PollDAO {
   static async getPollById(pollId) {
@@ -14,6 +15,10 @@ class PollDAO {
 
   static async createPoll(currentUserId, newPoll) {
     await models.Poll.create({ userId: currentUserId, ...newPoll });
+  }
+
+  static async createPollsFromCSV() {
+    await models.Poll.bulkCreate(new CSVReader().getParsedData('poll'));
   }
 
   static async updatePoll(pollId, updatedPoll) {

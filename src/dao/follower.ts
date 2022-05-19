@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class FollowerDAO {
   static async getFollowers(currentUserId) {
@@ -27,6 +28,10 @@ class FollowerDAO {
       followerId: currentUserId,
       followedId: userId
     });
+  }
+
+  static async createFollowersFromCSV() {
+    await models.Follower.bulkCreate(new CSVReader().getParsedData('follower'));
   }
 
   static async deleteFollower(followerId) {

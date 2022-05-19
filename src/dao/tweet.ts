@@ -1,4 +1,5 @@
 import models from '../models';
+import CSVReader from '../csvUtils/csvReader';
 
 class TweetDAO {
   static async getTweetById(tweetId) {
@@ -14,6 +15,10 @@ class TweetDAO {
 
   static async createTweet(currentUserId, newTweet) {
     await models.Tweet.create({ userId: currentUserId, ...newTweet });
+  }
+
+  static async createTweetsFromCSV() {
+    await models.Tweet.bulkCreate(new CSVReader().getParsedData('tweet'));
   }
 
   static async updateTweet(tweetId, updatedTweet) {

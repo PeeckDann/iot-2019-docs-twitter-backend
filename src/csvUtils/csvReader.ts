@@ -13,14 +13,14 @@ class CSVReader {
     return this._instance;
   }
 
-  public getParsedData(key: string): object[] {
+  public getParsedData(key: string) {
     if (!this._parsedData) {
       this._parsedData = this.parseCSV();
     }
     return this._parsedData[key];
   }
 
-  private parseCSV(): object {
+  private parseCSV() {
     const parsedData = {};
 
     const data = fs.readFileSync(dataFilePath, 'utf8');
