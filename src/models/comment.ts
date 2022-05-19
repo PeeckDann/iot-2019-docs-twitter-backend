@@ -3,13 +3,13 @@ import { ExtendedModel } from '../utils/dbHelper';
 import db from '../db';
 
 class Comment extends ExtendedModel {
-  public text!: string;
+  public commentText!: string;
   public media!: string;
 }
 
 Comment.init(
   {
-    text: {
+    commentText: {
       type: DataTypes.STRING(50),
       allowNull: false
     },

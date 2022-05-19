@@ -18,7 +18,7 @@ class ChatDAO {
   }
 
   static async createChatsFromCSV() {
-    await models.Chat.bulkCreate(new CSVReader().getParsedData('chats'));
+    await models.Chat.bulkCreate(new CSVReader().getParsedData('chat'));
   }
 
   static async updateChat(chatId, updatedChat) {

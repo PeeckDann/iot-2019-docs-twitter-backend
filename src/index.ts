@@ -22,7 +22,7 @@ app.use(json());
 app.use(cors());
 app.use(router);
 
-db.sync({ force: true })
+db.authenticate()
   .then(() => {
     app.listen(appConfig.port, () => {
       console.log(`Server started on port ${appConfig.port}`);
