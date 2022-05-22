@@ -7,6 +7,6 @@ module.exports = {
     dialect: 'mysql'
   },
   appConfig: {
-    port: 3000
+    port: 5000
   }
 };

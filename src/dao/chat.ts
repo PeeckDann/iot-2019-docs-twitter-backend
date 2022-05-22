@@ -14,7 +14,7 @@ class ChatDAO {
   }
 
   static async createChat(currentUserId, userId, newChat) {
-    await models.Chat.create({ firstUserId: currentUserId, secondUserId: userId, newChat });
+    await models.Chat.create({ firstUserId: currentUserId, secondUserId: userId, ...newChat });
   }
 
   static async createChatsFromCSV() {
