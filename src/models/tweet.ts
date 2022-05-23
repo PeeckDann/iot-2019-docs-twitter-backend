@@ -3,19 +3,19 @@ import { ExtendedModel } from '../utils/dbHelper';
 import db from '../db';
 
 class Tweet extends ExtendedModel {
-  public tweetText!: string;
-  public media!: string;
+  public tweetText: string;
+  public media: string;
 }
 
 Tweet.init(
   {
     tweetText: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: true
     },
     media: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: true
     }
   },
   {

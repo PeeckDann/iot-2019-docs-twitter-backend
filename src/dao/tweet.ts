@@ -10,7 +10,13 @@ class TweetDAO {
   }
 
   static async getTweets(currentUserId) {
-    return await models.Tweet.findAll({ where: { userId: currentUserId }, raw: true });
+    const tweetInstances = await models.Tweet.findAll({
+      where: { userId: currentUserId },
+      include: { all: true, nested: true }
+    });
+    return tweetInstances.map((tweetInstance) => {
+      return tweetInstance.get({ plain: true });
+    });
   }
 
   static async createTweet(currentUserId, newTweet) {
