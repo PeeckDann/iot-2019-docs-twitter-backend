@@ -11,9 +11,7 @@ class CSVWriter {
 
     const tweetValues = [`${headers.tweet.join(',')}\r\n`];
     for (let i = 1; i <= 80; i++) {
-      tweetValues.push(
-        `${getRandomNumber(1, 40)},` + `${getRandomNumberOrNothing(1, i - 1)},` + `text-${i},` + `media-${i}\r\n`
-      );
+      tweetValues.push(`${getRandomNumber(1, 40)},` + `,` + `text-${i},` + `media-${i}\r\n`);
     }
 
     const pollValues = [`${headers.poll.join(',')}\r\n`];

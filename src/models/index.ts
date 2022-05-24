@@ -75,7 +75,8 @@ Tweet.hasMany(Comment, {
   foreignKey: {
     allowNull: false
   },
-  onDelete: 'CASCADE'
+  onDelete: 'CASCADE',
+  onUpdate: 'NO ACTION'
 });
 Tweet.hasMany(Tweet, {
   foreignKey: {
