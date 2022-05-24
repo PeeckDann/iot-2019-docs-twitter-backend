@@ -3,11 +3,11 @@ import CommentController from '../controllers/comment';
 
 const router = Router();
 
-router.get('tweets/:tweetId/comments/:commentId', CommentController.getCommentById);
-router.get('tweets/:tweetId/comments', CommentController.getComments);
-router.post('tweets/:tweetId/comments', CommentController.createComment);
+router.get('/tweets/:tweetId/comments/:commentId', CommentController.getCommentById);
+router.get('/tweets/:tweetId/comments', CommentController.getComments);
+router.post('/tweets/:tweetId/comments', CommentController.createComment);
 router.post('/tweets/comments/fill-db/csv', CommentController.createCommentsFromCSV);
-router.put('tweets/:tweetId/comments/:commentId', CommentController.updateComment);
-router.delete('tweets/:tweetId/comments/:commentId', CommentController.deleteComment);
+router.put('/tweets/:tweetId/comments/:commentId', CommentController.updateComment);
+router.delete('/tweets/:tweetId/comments/:commentId', CommentController.deleteComment);
 
 export default router;

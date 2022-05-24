@@ -4,7 +4,7 @@ import db from '../db';
 
 class Comment extends ExtendedModel {
   public commentText!: string;
-  public media!: string;
+  public media: string;
 }
 
 Comment.init(
@@ -15,7 +15,7 @@ Comment.init(
     },
     media: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: true
     }
   },
   {
